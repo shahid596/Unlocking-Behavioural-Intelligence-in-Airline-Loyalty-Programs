@@ -113,7 +113,3 @@ Estimated revenue at risk (CLV x churn probability, summed across all members):
   worth testing a different window length against real business outcomes if this
   were deployed for real.
 
-## Point of Contact (per the original problem statement)
-
-Nalin Goel - 8289031644
-Keerthana - 9019647256
