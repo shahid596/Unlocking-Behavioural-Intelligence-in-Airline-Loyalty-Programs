@@ -1,30 +1,12 @@
-"""
-app.py
 
-A simple Streamlit prototype for a non-technical marketing manager.
-
-Run it with:
-    streamlit run app.py
-
-Goal: someone should be able to open this and, within a few seconds,
-answer "who needs attention right now, and what should I do about it?"
-without reading any manual.
-
-This reads the two files produced by Retention_Playbook.ipynb:
-    - customer_action_list.csv   (one row per member: risk, segment, action)
-    - retention_playbook.csv     (one row per segment x risk group: the "why")
-
-Put this file in the same folder as those two CSVs before running.
-"""
 
 import pandas as pd
 import streamlit as st
 
 st.set_page_config(page_title="Loyalty Retention Dashboard", layout="wide")
 
-# --------------------------------------------------------------------------
-# Load data
-# --------------------------------------------------------------------------
+#Load Data
+
 @st.cache_data
 def load_data():
     customers = pd.read_csv("customer_action_list.csv")
@@ -33,12 +15,9 @@ def load_data():
 
 customers, playbook = load_data()
 
-st.title("✈️ Loyalty Program Retention Dashboard")
+st.title("Loyalty Program Retention Dashboard")
 st.caption("A first-time user should be able to see who needs attention and what to do about it, right away.")
 
-# --------------------------------------------------------------------------
-# Top-line numbers
-# --------------------------------------------------------------------------
 col1, col2, col3, col4 = st.columns(4)
 
 total_members = len(customers)
@@ -53,9 +32,7 @@ col4.metric("CLV in High Risk Tier", f"${high_risk_clv:,.0f}")
 
 st.divider()
 
-# --------------------------------------------------------------------------
-# Filters
-# --------------------------------------------------------------------------
+
 st.subheader("Find members who need attention")
 
 filter_col1, filter_col2 = st.columns(2)
@@ -93,7 +70,6 @@ st.dataframe(
     height=350,
 )
 
-# Let the manager download exactly the filtered list they're looking at
 st.download_button(
     "Download this list as CSV",
     data=filtered.to_csv(index=False),
@@ -102,18 +78,15 @@ st.download_button(
 )
 
 st.divider()
+# The playbook
 
-# --------------------------------------------------------------------------
-# The playbook - what to actually do
-# --------------------------------------------------------------------------
 st.subheader("Retention Playbook: what to do for each group")
 st.dataframe(playbook, use_container_width=True, height=400)
 
 st.divider()
 
-# --------------------------------------------------------------------------
-# Segment overview
-# --------------------------------------------------------------------------
+#segment overview
+
 chart_col1, chart_col2 = st.columns(2)
 
 with chart_col1:
