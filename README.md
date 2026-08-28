@@ -7,7 +7,7 @@
 
   ## Project structure
 
-  
+  ```
   ├── 1_Data_Understanding.ipynb        # initial exploration of the raw data
   ├── 2_Data_Cleaning_Final.ipynb       # cleaning, missing values, duplicates, outliers
   ├── Feature_Engineering.ipynb         # churn label, cutoff windows, feature list
@@ -25,7 +25,7 @@
   ├── customer_segments.csv                    # output of Customer_Segmentation.ipynb
   ├── customer_action_list.csv                 # output of Retention_Playbook.ipynb
   └── retention_playbook.csv                   # output of Retention_Playbook.ipynb
-
+```
 
   ## How churn is defined and why
 
