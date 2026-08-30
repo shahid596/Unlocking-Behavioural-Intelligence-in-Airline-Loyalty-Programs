@@ -10,7 +10,7 @@ st.set_page_config(page_title="Loyalty Retention Dashboard", layout="wide")
 @st.cache_data
 def load_data():
     customers = pd.read_csv("Outputs/customer_action_list.csv")
-    playbook = pd.read_csv("retention_playbook.csv")
+    playbook = pd.read_csv("Outputs/retention_playbook.csv")
     return customers, playbook
 
 customers, playbook = load_data()
